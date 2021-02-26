@@ -4,10 +4,8 @@
 import client
 import users
 from venmo_api import Client
+import constants
 # docs: https://venmo.readthedocs.io/en/latest/
-
-TRANSACTION_ID = "11"
-DATE = "(01/31/2021)"  # Last sunday of each month
 
 
 def requestPaymentFromUsersList(isReadyToChargeUsers):
@@ -17,7 +15,7 @@ def requestPaymentFromUsersList(isReadyToChargeUsers):
         if inputResponse == "Y":
             for user in users.userList:
                 personalMessage = "Orphan Sponsorship #{transactionId} {date} - {name}".format(
-                    transactionId=TRANSACTION_ID, date=DATE, name=user["name"])
+                    transactionId=constants.TRANSACTION_ID, date=constants.DATE, name=user["name"])
                 client.venmo.payment.request_money(
                     20, personalMessage, user["id"])
             print("Request sent.")
@@ -25,6 +23,6 @@ def requestPaymentFromUsersList(isReadyToChargeUsers):
         print("================== THIS IS A TEST ==================")
         for user in users.userList:
             personalMessage = "Orphan Sponsorship #{transactionId} {date} - {name}".format(
-                transactionId=TRANSACTION_ID, date=DATE, name=user["name"])
+                transactionId=constants.TRANSACTION_ID, date=constants.DATE, name=user["name"])
             print(personalMessage)
         print("================== THIS IS A TEST ==================")
