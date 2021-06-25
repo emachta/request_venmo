@@ -14,7 +14,7 @@ def requestPaymentFromUsersList(isReadyToChargeUsers):
             "Are you sure you would like to charge the users? (type Y to continue) ")
         if inputResponse == "Y":
             for user in users.userList:
-                personalMessage = "Orphan Sponsorship #{transactionId} {date} - {name}".format(
+                personalMessage = "Sponsorship #{transactionId} {date} - {name}".format(
                     transactionId=constants.TRANSACTION_ID, date=constants.DATE, name=user["name"])
                 client.venmo.payment.request_money(
                     20, personalMessage, user["id"])
@@ -22,7 +22,7 @@ def requestPaymentFromUsersList(isReadyToChargeUsers):
     else:
         print("================== THIS IS A TEST ==================")
         for user in users.userList:
-            personalMessage = "Orphan Sponsorship #{transactionId} {date} - {name}".format(
+            personalMessage = "Sponsorship #{transactionId} {date} - {name}".format(
                 transactionId=constants.TRANSACTION_ID, date=constants.DATE, name=user["name"])
             print(personalMessage)
         print("================== THIS IS A TEST ==================")
